@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Title</title>
+  <title>Mobx</title>
   <meta charset="utf-8">
   <style>
     @import url(./assets/Yanone+Kaffeesatz.css);
@@ -32,9 +32,27 @@
 
 class: center, middle
 
-# Title
+# Mobx
 
 ---
+
+# UI
+
+![](./assets/images/snip_20191001182555.png)
+
+Internally, action is doing much more than being a simple wrapper. It ensures that all notifications for state changes are fired, but only after the completion of the action function.
+
+
+Observables capture the state of your application. Observers (also called reactions) include both the side effect handlers as well as the UI. The actions are, well, actions that cause a change in the observable state:
+
+Reactions can really change the world for your app. They are the side-effect causing behaviors that react to the changes in observables. Reactions complete the core triad of MobX and act as the observers of the observables.
+
+When they change, a re-render of the react component is triggered. Internally, observer() creates a wrapper component that uses a plain reaction() to watch the observables and re-render as a side-effect. This is why we treat UI as being just another side-effect, albeit a very visible and obvious one.
+
+Computed properties are, in fact, data for the UI and other state-management aspects. Unlike the side effect-causing functions of MobX, such as autorun(), reaction(), and when(), computed properties don't cause any external side effects and stay within the confines of the client-state. Another clear distinction between MobX reactions and computed properties is that there is an implicit expectation that computed properties will give back a value, whereas reactions are fire-and-forget with no expectation of getting back a value.
+
+
+So, if you happen to change 10 observables, 10 notifications will be sent out. At times, this is just excessive. You don't want a noisy system that notifies too eagerly. It is better to batch up the notifications and send them in one shot instead.
 
 # Agenda
 
