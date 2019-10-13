@@ -24,6 +24,7 @@ const PersonComponent = observer(function ({ person }) {
 
 const Demo = function () {
   const person = new Person;
+  window.person = person;
   return <div>
     <PersonComponent person={person}></PersonComponent>
   </div>

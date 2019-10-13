@@ -7,6 +7,7 @@ import Basic from './001_Basic';
 import Nested from './002_Nested';
 import SideEffects from './003_SideEffects';
 import FunctionComponents from './004_Function_Components';
+import ReactProvider from './005_React_Provider';
 
 class App extends React.Component {
   constructor(props) {
@@ -21,6 +22,7 @@ class App extends React.Component {
           <Route path="/002" exact component={Nested}></Route>
           <Route path="/003" exact component={SideEffects}></Route>
           <Route path="/004" exact component={FunctionComponents}></Route>
+          <Route path="/005" exact component={ReactProvider}></Route>
           <Route path="/" exact>
             <div>
               <ul>
@@ -38,6 +40,9 @@ class App extends React.Component {
                 </li>
                 <li>
                   <Link to={`/004`}>004 Function Components</Link>
+                </li>
+                <li>
+                  <Link to={`/005`}>005 React Provider</Link>
                 </li>
               </ul>
             </div>
